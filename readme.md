@@ -16,7 +16,7 @@ If you don’t yet use [npm](http://npmjs.com/) or a modern module bundler, and 
 
 ## Usage
 
-**This library requires React-Habitat.** You should first familirise yourself with it and [read its docs](https://github.com/DeloitteDigitalAPAC/react-habitat)
+You should first familirise yourself with React Habitat and [its docs](https://github.com/DeloitteDigitalAPAC/react-habitat#getting-started)
 
 When configuring the React Habitat Bootstrapper, you'll want to use the Redux `Container` instead of the default one and pass in your *store* like so:
 
@@ -62,18 +62,6 @@ class MyApp extends ReactHabitat.Bootstrapper {
 // Always export a 'new' instance so it immediately evokes
 export default new MyApp();
 ```
-
-## Want to contribute?
-
-* Got an amazing idea to make this better?
-* Found an annoying bug?
-
-Please don't hesitate to raise an issue through GitHub or open a pull request to show off your fancy pants coding skills - we'll really appreciate it!
-
-## Key Contributors
-
-### Deloitte Digital Australia
-* @jennasalau
 
 ## Who is Deloitte Digital?
 

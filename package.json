@@ -1,6 +1,6 @@
 {
   "name": "react-habitat-redux",
-  "version": "1.0.0-beta2",
+  "version": "1.0.0",
   "description": "Brings Redux connect capabilities with React Habitat",
   "main": "./lib/index.js",
   "repository": {
