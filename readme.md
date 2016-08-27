@@ -1,6 +1,6 @@
 ![Deloitte Digital](https://raw.githubusercontent.com/DeloitteDigital/DDBreakpoints/master/docs/deloittedigital-logo-white.png)
 
-# React Habitat Redux ![Build Status](https://travis-ci.org/DeloitteDigitalAPAC/react-habitat-redux.svg?branch=develop)
+# React Habitat Redux ![Build Status](https://travis-ci.org/DeloitteDigitalAPAC/react-habitat-redux.svg?branch=master)
 
 This library brings [Redux](http://redux.js.org/) capabilities to [React-Habitat](https://github.com/DeloitteDigitalAPAC/react-habitat)
 
@@ -10,23 +10,20 @@ Install with Node Package Manager (NPM)
 
 `npm install react-habitat react-habitat-redux --save-dev`
 
-*Note* npm deprecated auto installing of peer dependencies since npm@3, so you will additionally need to install these dependencies if you haven't already.
+This assumes that you’re using [npm](http://npmjs.com/) package manager with a module bundler like [Webpack](http://webpack.github.io) or [Browserify](http://browserify.org/).
 
-- Redux `npm install redux --save-dev`
-- React-Redux `npm install react-redux --save-dev`
-- React `npm install react --save-dev`
-- React-Dom `npm install react-dom --save-dev`
+If you don’t yet use [npm](http://npmjs.com/) or a modern module bundler, and would rather prefer a single-file [UMD](https://github.com/umdjs/umd) build that makes `ReactHabitatRedux` available as a global object, you can grab a pre-built version from the dist folder.
 
 ## Usage
 
 [React Habitat Documentation](https://github.com/DeloitteDigitalAPAC/react-habitat)
 
-When configuring the React Habitat Bootstrapper, you'll want to use the Redux Container instead of the default one like so:
+When configuring the React Habitat Bootstrapper, you'll want to use the Redux `Container` instead of the default one like so:
 
 
 ```javascript
 import ReactHabitat                 from 'react-habitat';
-import ReduxHabitat                 from 'react-habitat-redux';
+import ReactHabitatRedux            from 'react-habitat-redux';
 import { createStore }              from 'redux';
 
 import configureStore               from './store/configureStore'
@@ -36,12 +33,12 @@ import AnotherReactComponent        from './AnotherReactComponent';
 class MyApp extends ReactHabitat.Bootstrapper {
     constructor(){
         super();
-        
+
         // Create a store
         const store = configureStore();
 
         // Create a new 'Redux' container builder for the store
-        var container = new ReduxHabitat.Container(store);
+        var container = new ReactHabitatRedux.Container(store);
 
         // Register your top level component(s)
         container.register('SomeReactComponent', SomeReactComponent);

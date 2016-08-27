@@ -14,14 +14,15 @@ var config = {
 		]
 	},
 	output: {
-		library: 'ReactHabitat',
+		library: 'ReactHabitatRedux',
 		libraryTarget: 'umd'
 	},
 	externals: {
 		'react': 'React',
 		'react-dom': 'ReactDOM',
 		'redux': 'Redux',
-		'react-redux': 'ReactRedux'
+		'react-redux': 'ReactRedux',
+		'react-habitat': 'ReactHabitat'
 	},
 	plugins: [
 		{
