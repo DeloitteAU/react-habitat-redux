@@ -29,7 +29,7 @@ var container = new ReactHabitatRedux.Container(store);
 ```
 It's important that you pass in the store object if you want redux 'connect' to work automatically.
 
-Here is a full class example:
+Here is a full Bootstrapper class example:
 
 ```javascript
 import ReactHabitat                 from 'react-habitat';
