@@ -16,10 +16,19 @@ If you don’t yet use [npm](http://npmjs.com/) or a modern module bundler, and 
 
 ## Usage
 
-[React Habitat Documentation](https://github.com/DeloitteDigitalAPAC/react-habitat)
+**This library requires React-Habitat.** [Read its docs](https://github.com/DeloitteDigitalAPAC/react-habitat)
 
-When configuring the React Habitat Bootstrapper, you'll want to use the Redux `Container` instead of the default one like so:
+When configuring the React Habitat Bootstrapper, you'll want to use the Redux `Container` instead of the default one and pass in your *store* like so:
 
+```javascript
+// Create a store
+const store = configureStore();
+
+// Create a new 'Redux' container builder for the store
+var container = new ReactHabitatRedux.Container(store);
+```
+
+Example
 
 ```javascript
 import ReactHabitat                 from 'react-habitat';
