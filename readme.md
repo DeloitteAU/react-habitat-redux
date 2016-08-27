@@ -4,7 +4,7 @@ This library brings [Redux](http://redux.js.org/) capabilities to [React-Habitat
 
 ## Installing
 
-**This library requires [react-habitat](https://github.com/DeloitteDigitalAPAC/react-habitat) and [react-redux](https://github.com/reactjs/react-redux/).**
+**This library requires [react-habitat](https://github.com/DeloitteDigitalAPAC/react-habitat).**
 
 Install with Node Package Manager (NPM)
 
