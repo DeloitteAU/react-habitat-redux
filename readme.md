@@ -1,14 +1,14 @@
-![Deloitte Digital](https://raw.githubusercontent.com/DeloitteDigital/DDBreakpoints/master/docs/deloittedigital-logo-white.png)
-
 # React Habitat Redux ![Build Status](https://travis-ci.org/DeloitteDigitalAPAC/react-habitat-redux.svg?branch=master)
 
 This library brings [Redux](http://redux.js.org/) capabilities to [React-Habitat](https://github.com/DeloitteDigitalAPAC/react-habitat)
 
 ## Installing
 
+**This library requires [react-habitat](https://github.com/DeloitteDigitalAPAC/react-habitat) and [react-redux](https://github.com/reactjs/react-redux/).**
+
 Install with Node Package Manager (NPM)
 
-`npm install react-habitat react-habitat-redux --save-dev`
+`npm install react-habitat-redux --save-dev`
 
 This assumes that you’re using [npm](http://npmjs.com/) package manager with a module bundler like [Webpack](http://webpack.github.io) or [Browserify](http://browserify.org/).
 
@@ -16,7 +16,7 @@ If you don’t yet use [npm](http://npmjs.com/) or a modern module bundler, and 
 
 ## Usage
 
-**This library requires React-Habitat.** [Read its docs](https://github.com/DeloitteDigitalAPAC/react-habitat)
+**This library requires React-Habitat.** You should first familirise yourself with it and [read its docs](https://github.com/DeloitteDigitalAPAC/react-habitat)
 
 When configuring the React Habitat Bootstrapper, you'll want to use the Redux `Container` instead of the default one and pass in your *store* like so:
 
@@ -27,8 +27,9 @@ const store = configureStore();
 // Create a new 'Redux' container builder for the store
 var container = new ReactHabitatRedux.Container(store);
 ```
+It's important that you pass in the store object if you want redux 'connect' to work automatically.
 
-Example
+Here is a full class example:
 
 ```javascript
 import ReactHabitat                 from 'react-habitat';
@@ -61,8 +62,6 @@ class MyApp extends ReactHabitat.Bootstrapper {
 // Always export a 'new' instance so it immediately evokes
 export default new MyApp();
 ```
-
-It's important that you pass in the store object if you want redux 'connect' to work automatically.
 
 ## Want to contribute?
 
