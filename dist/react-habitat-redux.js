@@ -111,7 +111,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	  function Container(store) {
 	    _classCallCheck(this, Container);
 
-	    var _this = _possibleConstructorReturn(this, Object.getPrototypeOf(Container).call(this));
+	    var _this = _possibleConstructorReturn(this, (Container.__proto__ || Object.getPrototypeOf(Container)).call(this));
 
 	    _this._factory = new _ReduxDomFactory2.default(store);
 	    return _this;
@@ -167,7 +167,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	 */
 	var ReduxDomFactory = function () {
 		function ReduxDomFactory() {
-			var store = arguments.length <= 0 || arguments[0] === undefined ? null : arguments[0];
+			var store = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : null;
 
 			_classCallCheck(this, ReduxDomFactory);
 
@@ -177,7 +177,7 @@ return /******/ (function(modules) { // webpackBootstrap
 		_createClass(ReduxDomFactory, [{
 			key: 'inject',
 			value: function inject(module) {
-				var props = arguments.length <= 1 || arguments[1] === undefined ? {} : arguments[1];
+				var props = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : {};
 				var target = arguments[2];
 
 
