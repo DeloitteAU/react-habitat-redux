@@ -43,9 +43,6 @@ export interface IReduxContainerConstructable{
 	new (store: any): IReduxContainer;
 }
 
-declare module ReduxHabitat {
+declare module 'react-habitat-redux' {
 	export var Container: IReduxContainerConstructable;
 }
-
-
-export default ReduxHabitat;
