@@ -63,6 +63,14 @@ class MyApp extends ReactHabitat.Bootstrapper {
 export default new MyApp();
 ```
 
+## TypeScript users please note
+We are using Babel to transpile our code which wraps our modules in a "fake" module with a `default` property. TypeScript doesn't do any of the `default` wire up magic ([see here for more details](https://github.com/Microsoft/TypeScript/issues/2242#issuecomment-83694181)).
+
+So in order for TypeScript to consume our modules you will need to:
+
+* Change `ReactHabitat.Bootstrapper` for `ReactHabitat.default.Bootstrapper`; and
+* Change `ReactHabitatRedux.Container` for `ReactHabitatRedux.default.Container`
+
 ## Who is Deloitte Digital?
 
 **Part Business. Part Creative. Part Technology. One hundred per cent digital.**
