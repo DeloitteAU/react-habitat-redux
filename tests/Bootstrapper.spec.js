@@ -9,10 +9,10 @@
 import ReactHabitat 		from 'react-habitat';
 import { createStore } 		from 'redux';
 
-import Container			from '../src/Container';
+import ReduxDomFactory		from '../src/ReduxDomFactory';
 
-import mochReducer	 		from './mochs/mochReducer';
-import MochContainer 		from './mochs/MochContainer';
+import mockReducer	 		from './fixtures/mockReducer';
+import MockContainer 		from './fixtures/MockContainer';
 
 
 let node = null;
@@ -21,17 +21,24 @@ describe('Bootstrapper', () => {
 
 	class App extends ReactHabitat.Bootstrapper {
 
-		constructor() {
+		constructor(cb) {
 			super();
 
-			const store = createStore(mochReducer);
+			// Create a redux store
+			const store = createStore(mockReducer);
 
-			const container = new Container(store);
-			container.registerComponent('IMochContainer', MochContainer);
+			// Create a container builder
+			const builder = new ReactHabitat.ContainerBuilder();
 
-			this.setContainer(container);
+			// Set the factory to use our redux factory
+			builder.factory = new ReduxDomFactory(store);
+
+			// Register our moch component
+			builder.register(MockContainer).as('IMockContainer');
+
+			// Set the container
+			this.setContainer(builder.build(), cb);
 		}
-
 	}
 
 	beforeEach(() => {
@@ -41,66 +48,73 @@ describe('Bootstrapper', () => {
 
 	afterEach(() => {
 		window.document.body.removeChild(node);
+		node = null;
 	});
 
-	it('should render a component', () => {
-		node.innerHTML = '<div data-component="IMochContainer"></div>';
+	it('should render a component', (done) => {
+		node.innerHTML = '<div data-component="IMockContainer"></div>';
 
-		const app = new App();
-		const componentLookup = node.innerHTML.match(/\[component MochComponent\]/g);
+		const app = new App(() => {
+			const componentLookup = node.innerHTML.match(/\[component MockComponent\]/g);
+			expect(componentLookup).not.toEqual(null);
+			expect(componentLookup.length).toEqual(1);
+			done();
+		});
 
 		expect(app).toBeDefined();
-		expect(componentLookup).not.toEqual(null);
-		expect(componentLookup.length).toEqual(1);
 	});
 
 
-	it('should update on provider changes', () => {
-		node.innerHTML = '<div data-component="IMochContainer"></div>';
+	it('should update on provider changes', (done) => {
+		node.innerHTML = '<div data-component="IMockContainer"></div>';
 
-		const app = new App();
-		const componentLookup = node.innerHTML.match(/\[component MochComponent\]/g);
-		const countBtn = document.getElementById('countBtn');
+		const app = new App(() => {
+			const componentLookup = node.innerHTML.match(/\[component MockComponent\]/g);
+			const countBtn = document.getElementById('countBtn');
 
-		expect(app).toBeDefined();
-		expect(componentLookup).not.toEqual(null);
-		expect(componentLookup.length).toEqual(1);
-		expect(countBtn.innerText).toBe('0');
+			expect(app).toBeDefined();
+			expect(componentLookup).not.toEqual(null);
+			expect(componentLookup.length).toEqual(1);
+			expect(countBtn.innerText).toBe('0');
 
-		countBtn.click();
-		expect(countBtn.innerText).toBe('1');
+			countBtn.click();
+			expect(countBtn.innerText).toBe('1');
 
-		countBtn.click();
-		expect(countBtn.innerText).toBe('2');
+			countBtn.click();
+			expect(countBtn.innerText).toBe('2');
 
-		countBtn.click();
-		countBtn.click();
-		expect(countBtn.innerText).toBe('4');
+			countBtn.click();
+			countBtn.click();
+			expect(countBtn.innerText).toBe('4');
 
+			done();
+		});
 	});
 
-	it('should pass own props', () => {
-		node.innerHTML = '<div data-component="IMochContainer" data-prop-prefix="BRAVO-"></div>';
+	it('should pass own props', (done) => {
+		node.innerHTML = '<div data-component="IMockContainer" data-prop-prefix="BRAVO-"></div>';
 
-		const app = new App();
-		const componentLookup = node.innerHTML.match(/\[component MochComponent\]/g);
-		const countBtn = document.getElementById('countBtn');
+		const app = new App(() => {
+			const componentLookup = node.innerHTML.match(/\[component MockComponent\]/g);
+			const countBtn = document.getElementById('countBtn');
 
-		expect(app).toBeDefined();
-		expect(componentLookup).not.toEqual(null);
-		expect(componentLookup.length).toEqual(1);
-		expect(countBtn.innerText).toBe('BRAVO-0');
+			expect(app).toBeDefined();
+			expect(componentLookup).not.toEqual(null);
+			expect(componentLookup.length).toEqual(1);
+			expect(countBtn.innerText).toBe('BRAVO-0');
 
-		countBtn.click();
-		expect(countBtn.innerText).toBe('BRAVO-1');
+			countBtn.click();
+			expect(countBtn.innerText).toBe('BRAVO-1');
 
-		countBtn.click();
-		expect(countBtn.innerText).toBe('BRAVO-2');
+			countBtn.click();
+			expect(countBtn.innerText).toBe('BRAVO-2');
 
-		countBtn.click();
-		countBtn.click();
-		expect(countBtn.innerText).toBe('BRAVO-4');
+			countBtn.click();
+			countBtn.click();
+			expect(countBtn.innerText).toBe('BRAVO-4');
 
+			done();
+		});
 	});
 
 });

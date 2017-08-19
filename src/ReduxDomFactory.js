@@ -16,15 +16,22 @@ import ReactDom			from 'react-dom';
  */
 export default class ReduxDomFactory {
 
-
 	constructor(store = null) {
+
+		/**
+		 * The redux store
+		 */
 		this.store = store;
 	}
 
+	/**
+	 * Inject the module into the dom wrapped in a redux provider
+	 * @param {*} module - The component to inject
+	 * @param {object} props  - The component props
+	 * @param {node} target - The node to inject to
+	 */
 	inject(module, props = {}, target) {
-
 		if (target) {
-
 			ReactDom.render(
 				React.createElement(
 					Provider,
@@ -34,12 +41,13 @@ export default class ReduxDomFactory {
 				target
 			);
 
-		} else {
-			console.warn('Target element is null or undefined. Cannot inject component');
 		}
-
 	}
 
+	/**
+	 * Dispose of any react instances for a node
+	 * @param {node} target - The node to tear down
+	 */
 	dispose(target) {
 		if (target) {
 			ReactDom.unmountComponentAtNode(target);

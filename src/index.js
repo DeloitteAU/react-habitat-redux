@@ -1,5 +1,4 @@
-import Container from './Container';
+import { ReduxDomFactory } from './ReduxDomFactory';
 
-export default {
-	Container,
-};
+export { ReduxDomFactory };
+export default ReduxDomFactory;

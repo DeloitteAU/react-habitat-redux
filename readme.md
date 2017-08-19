@@ -1,16 +1,21 @@
 # React Habitat Redux ![Build Status](https://travis-ci.org/DeloitteDigitalAPAC/react-habitat-redux.svg?branch=master)
 
+
+*Looking for the older [v1.0 docs](https://github.com/DeloitteDigitalAPAC/react-habitat-redux/blob/9989af80d45e41ac80415423c5b347530896031b/readme.md)?*
+
+
 This library brings [Redux](http://redux.js.org/) capabilities to [React-Habitat](https://github.com/DeloitteDigitalAPAC/react-habitat)
 
 ## Installing
 
-**This library requires [react-habitat](https://github.com/DeloitteDigitalAPAC/react-habitat).**
+**This library requires [react-habitat](https://github.com/DeloitteDigitalAPAC/react-habitat). v0.5.0 or greater**
 
 Install with Node Package Manager (NPM)
 
-`npm install react-habitat-redux --save-dev`
+`npm install react-habitat-redux --save`
 
-This assumes that you’re using [npm](http://npmjs.com/) package manager with a module bundler like [Webpack](http://webpack.github.io) or [Browserify](http://browserify.org/).
+This assumes that you’re using a package manager with a module bundler like [Webpack](http://webpack.github.io) or [Rollup](https://rollupjs.org/).
+
 
 If you don’t yet use [npm](http://npmjs.com/) or a modern module bundler, and would rather prefer a single-file [UMD](https://github.com/umdjs/umd) build that makes `ReactHabitatRedux` available as a global object, you can grab a pre-built version from the dist folder.
 
@@ -18,14 +23,17 @@ If you don’t yet use [npm](http://npmjs.com/) or a modern module bundler, and 
 
 You should first familirise yourself with React Habitat and [its docs](https://github.com/DeloitteDigitalAPAC/react-habitat#getting-started)
 
-When configuring the React Habitat Bootstrapper, you'll want to use the Redux `Container` instead of the default one and pass in your *store* like so:
+When configuring the React Habitat `ContainerBuilder`, you'll want to set the `factory` for a ReduxDomFactory instead of the default one and pass in your *store* like so:
 
 ```javascript
 // Create a store
 const store = configureStore();
 
-// Create a new 'Redux' container builder for the store
-var container = new ReactHabitatRedux.Container(store);
+// Create a container builder
+const containerBuilder = new ReactHabitat.ContainerBuilder();
+
+// Set a new 'Redux' factory for the store
+containerBuilder.factory = new ReduxDomFactory(store).
 ```
 It's important that you pass in the store object if you want redux 'connect' to work automatically.
 
@@ -33,7 +41,7 @@ Here is a full Bootstrapper class example:
 
 ```javascript
 import ReactHabitat                 from 'react-habitat';
-import ReactHabitatRedux            from 'react-habitat-redux';
+import { ReduxDomFactory }          from 'react-habitat-redux';
 import { createStore }              from 'redux';
 
 import configureStore               from './store/configureStore'
@@ -47,29 +55,23 @@ class MyApp extends ReactHabitat.Bootstrapper {
         // Create a store
         const store = configureStore();
 
-        // Create a new 'Redux' container builder for the store
-        var container = new ReactHabitatRedux.Container(store);
+        const containerBuilder = new ReactHabitat.ContainerBuilder();
+
+        // Set a new 'Redux' factory for the store
+        containerBuilder.factory = new ReduxDomFactory(store);
 
         // Register your top level component(s)
-        container.register('SomeReactComponent', SomeReactComponent);
-        container.register('AnotherReactComponent', AnotherReactComponent);
+        containerBuilder.register(SomeReactComponent).as('SomeReactComponent');
+        containerBuilder.register(AnotherReactComponent).as('AnotherReactComponent');
 
         // Finally, set the container
-        this.setContainer(container);
+        this.setContainer(containerBuilder.build());
     }
 }
 
 // Always export a 'new' instance so it immediately evokes
 export default new MyApp();
 ```
-
-## TypeScript users please note
-We are using Babel to transpile our code which wraps our modules in a "fake" module with a `default` property. TypeScript doesn't do any of the `default` wire up magic ([see here for more details](https://github.com/Microsoft/TypeScript/issues/2242#issuecomment-83694181)).
-
-So in order for TypeScript to consume our modules you will need to:
-
-* Change `ReactHabitat.Bootstrapper` for `ReactHabitat.default.Bootstrapper`; and
-* Change `ReactHabitatRedux.Container` for `ReactHabitatRedux.default.Container`
 
 ## Who is Deloitte Digital?
 
