@@ -59,9 +59,11 @@ return /******/ (function(modules) { // webpackBootstrap
 	Object.defineProperty(exports, "__esModule", {
 	  value: true
 	});
+	exports.ReduxDomFactory = undefined;
 
 	var _ReduxDomFactory = __webpack_require__(1);
 
+	exports.ReduxDomFactory = _ReduxDomFactory.ReduxDomFactory;
 	exports.default = _ReduxDomFactory.ReduxDomFactory;
 
 /***/ }),
