@@ -1,6 +1,6 @@
 {
   "name": "react-habitat-redux",
-  "version": "1.0.2",
+  "version": "2.0.0",
   "description": "Brings Redux connect capabilities with React Habitat",
   "main": "./lib/index.js",
   "repository": {
@@ -56,16 +56,19 @@
     "karma-phantomjs-launcher": "^1.0.1",
     "karma-webpack": "^1.8.0",
     "webpack": "^1.13.0",
-		"redux": "^3.0.0"
+    "karma-firefox-launcher": "^1.0.1",
+    "prop-types": "^15.5.10"
   },
   "dependencies": {
-		"react": "^15.0.0",
-		"react-dom": "^15.0.0",
-    "react-habitat": "^0.2.0",
-    "react-redux": "^4.0.0"
+    "react": "^15.0.0",
+    "react-dom": "^15.0.0",
+    "react-habitat": "^0.5.0", 
+    "react-redux": "^4.0.0",
+    "redux": "^3.0.0"
   },
   "scripts": {
-    "test": "karma start --single-run --browsers PhantomJS",
+    "test": "npm run lint && karma start --single-run",
+    "debug": "NODE_ENV=development karma start --browsers Chrome",
     "build": "npm run build:lib && npm run build:umd && npm run build:umd:min",
     "build:lib": "babel src --out-dir lib",
     "build:umd": "cross-env NODE_ENV=development webpack src/index.js dist/react-habitat-redux.js",
