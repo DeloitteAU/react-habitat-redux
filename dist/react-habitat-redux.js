@@ -63,8 +63,12 @@ return /******/ (function(modules) { // webpackBootstrap
 
 	var _ReduxDomFactory = __webpack_require__(1);
 
-	exports.ReduxDomFactory = _ReduxDomFactory.ReduxDomFactory;
-	exports.default = _ReduxDomFactory.ReduxDomFactory;
+	var _ReduxDomFactory2 = _interopRequireDefault(_ReduxDomFactory);
+
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+	exports.ReduxDomFactory = _ReduxDomFactory2.default;
+	exports.default = _ReduxDomFactory2.default;
 
 /***/ }),
 /* 1 */
