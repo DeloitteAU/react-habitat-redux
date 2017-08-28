@@ -20,6 +20,8 @@ Thumbs.db
 nbproject
 *.sublime-project
 *.sublime-workspace
+*.tern-port
+.tags
 
 # Dreamweaver added files
 _notes
