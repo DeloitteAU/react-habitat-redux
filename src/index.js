@@ -1,4 +1,4 @@
-import { ReduxDomFactory } from './ReduxDomFactory';
+import ReduxDomFactory from './ReduxDomFactory';
 
 export { ReduxDomFactory };
 export default ReduxDomFactory;
