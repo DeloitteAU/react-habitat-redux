@@ -1,6 +1,10 @@
 ## React Habitat Redux Change log
 
-# [2.0.1]
+### [2.0.2]
+
+- Now works with react and react-dom v16
+
+### [2.0.1]
 
 - Fixed broken import. Thanks @jirgn
 
