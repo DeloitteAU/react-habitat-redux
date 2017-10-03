@@ -57,7 +57,7 @@
     "karma-webpack": "^1.8.0",
     "webpack": "^1.13.0",
     "karma-firefox-launcher": "^1.0.1",
-    "prop-types": "^15.5.10"
+    "prop-types": "^15.5.10",
     "react": "^15.0.0",
     "react-dom": "^15.0.0"
   },
