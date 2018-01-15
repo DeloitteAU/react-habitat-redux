@@ -32,15 +32,7 @@ export default class ReduxDomFactory {
 	 */
 	inject(module, props = {}, target) {
 		if (target) {
-			ReactDom.render(
-				React.createElement(
-					Provider,
-					{ store: this.store },
-					React.createElement(module, props)
-				),
-				target
-			);
-
+			ReactDom.render(React.createElement(Provider, { store: this.store }, React.createElement(module, props)), target);
 		}
 	}
 

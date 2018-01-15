@@ -33,7 +33,7 @@ const store = configureStore();
 const containerBuilder = new ReactHabitat.ContainerBuilder();
 
 // Set a new 'Redux' factory for the store
-containerBuilder.factory = new ReduxDomFactory(store).
+containerBuilder.factory = new ReduxDomFactory(store);
 ```
 It's important that you pass in the store object if you want redux 'connect' to work automatically.
 

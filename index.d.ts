@@ -5,47 +5,30 @@
  * This source code is licensed under the BSD-3-Clause license found in the
  * LICENSE file in the root directory of this source tree.
  */
-import { IContainer, IDomFactory }	from 'react-habitat';
+import { IDomFactory }	from 'react-habitat';
 
+declare module "react-habitat-redux" {
 
-export interface IReduxContainer extends IContainer {
-	/**
-	 * Register a new component in the container
-	 * @param {string}      name        - The key that identifies this component
-	 * @param {*}           comp        - The component class
-	 */
-	register: (name: string, comp: any) => void;
+	class ReduxDomFactory implements IDomFactory {
 
-	/**
-	 * Register multiple components in the container
-	 * @param {object}      comps        - The components
-	 */
-	registerAll: (comps: {}) => void;
+		/**
+		 * Constructor
+		 * @param {*}			store		- The Redux store
+		 */
+		constructor(store: any);
 
-	/**
-	 * Get a registered component for a key
-	 * @param {string}      name        - The key name of the component that has been registered
-	 */
-	resolve: (name: string) => any;
+		/**
+		 * The inject method after a wire-up has been requested
+		 * @param {*}			module		- The component
+		 * @param {object}		props		- The components properties
+		 * @param {Element}		target		- The element to inject the component into
+		 */
+		inject: (module: any, props: {}, target: Element) => void;
 
-	/**
-	* The container's unique id
-	*/
-	id: () => string;
-
-	/**
-	 * The containers dom factory
-	 */
-	domFactory: () => IDomFactory;
+		/**
+		 * The dispose method
+		 * @param {Element}		target		- The element to dispose
+		 */
+		dispose: (target: Element) => void;
+	}
 }
-
-export interface IReduxContainerConstructable{
-	new (store: any): IReduxContainer;
-}
-
-declare module ReduxHabitat {
-	export var Container: IReduxContainerConstructable;
-}
-
-
-export default ReduxHabitat;
