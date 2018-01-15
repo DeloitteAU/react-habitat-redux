@@ -3,9 +3,9 @@
 ### [2.0.3]
 
 - Fixed syntax typo in readme
-- Fixed typescript definitions, now exposes ReduxDomFactory correctly #6
+- Fixed typescript definitions, now exposes `ReduxDomFactory` correctly [#6](https://github.com/DeloitteDigitalAPAC/react-habitat-redux/issues/6)
 - Removed `redux` as a peer dependency as we only need to depend on `react-redux`
-- Updated habitat dependency to 0.6
+- Updated habitat dependency to v0.6
 
 ### [2.0.2]
 
