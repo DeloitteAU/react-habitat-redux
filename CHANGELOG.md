@@ -1,5 +1,12 @@
 ## React Habitat Redux Change log
 
+### [2.0.3]
+
+- Fixed syntax typo in readme
+- Fixed typescript definitions, now exposes ReduxDomFactory correctly #6
+- Removed `redux` as a peer dependency as we only need to depend on `react-redux`
+- Updated habitat dependency to 0.6
+
 ### [2.0.2]
 
 - Now works with react and react-dom v16
