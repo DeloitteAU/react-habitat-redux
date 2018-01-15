@@ -43,12 +43,9 @@
     "babel-preset-react": "^6.11.1",
     "babel-preset-stage-0": "^6.5.0",
     "cross-env": "^2.0.0",
-    "eslint": "^3.2.2",
-    "eslint-config-airbnb": "^10.0.0",
-    "eslint-plugin-import": "^1.12.0",
+    "eslint": "^4.15.0",
+    "eslint-config-deloitte-react": "^3.1.1",
     "eslint-plugin-jasmine": "^1.8.1",
-    "eslint-plugin-jsx-a11y": "^2.0.1",
-    "eslint-plugin-react": "^6.0.0",
     "jasmine-core": "^2.4.1",
     "karma": "^1.1.2",
     "karma-chrome-launcher": "^1.0.1",
@@ -61,6 +58,7 @@
     "react-dom": "^15.0.0",
     "react-habitat": "^0.6.1",
     "react-redux": "^5.0.6",
+    "redux": "^3.7.2",
     "webpack": "^1.13.0"
   },
   "peerDependencies": {

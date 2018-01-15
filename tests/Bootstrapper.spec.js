@@ -51,7 +51,7 @@ describe('Bootstrapper', () => {
 		node = null;
 	});
 
-	it('should render a component', (done) => {
+	it('should render a component', done => {
 		node.innerHTML = '<div data-component="IMockContainer"></div>';
 
 		const app = new App(() => {
@@ -65,7 +65,7 @@ describe('Bootstrapper', () => {
 	});
 
 
-	it('should update on provider changes', (done) => {
+	it('should update on provider changes', done => {
 		node.innerHTML = '<div data-component="IMockContainer"></div>';
 
 		const app = new App(() => {
@@ -91,7 +91,7 @@ describe('Bootstrapper', () => {
 		});
 	});
 
-	it('should pass own props', (done) => {
+	it('should pass own props', done => {
 		node.innerHTML = '<div data-component="IMockContainer" data-prop-prefix="BRAVO-"></div>';
 
 		const app = new App(() => {

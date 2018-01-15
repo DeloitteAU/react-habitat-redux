@@ -1,10 +1,8 @@
 {
-  "extends": "airbnb",
+  "extends": "eslint-config-deloitte-react",
   "rules": {
-    "no-underscore-dangle": 0,
-    "padded-blocks": 0,
-    "indent": [2, "tab"],
-    "no-multi-spaces": [2, { "exceptions": { "ImportDeclaration": true } }]
+    "import/no-named-as-default": 0,
+    "import/no-named-as-default-member": 0
   },
   "env": {
     "browser": true,
