@@ -1,5 +1,10 @@
 ## React Habitat Redux Change log
 
+
+### [2.0.4]
+
+- Upgraded React Habitat peer dependency range to include v1.0.0
+
 ### [2.0.3]
 
 - Fixed syntax typo in readme
